@@ -13,31 +13,31 @@ export default function NavBar() {
 
   return (
     <>
-      <nav className='flex text-[#c3c3c3] bg-black py-4 px-80 justify-center items-center w-full'>
-        <div className='flex justify-between items-center w-full'>
-          <img src={itemImages.Logo} />
-          <ul className='relative flex'>
+      <nav className='flex text-dark-textPrimary bg-dark-bgNav py-3 justify-center items-center'>
+        <div className='flex justify-between items-center gap-6'>
+          <img src={itemImages.Logo}/>
+          <ul className='relative flex gap-5'>
             {Object.keys(menuItems).map((items) => (
-              <li keys = {items} onMouseEnter={() => setHoverMenu(items)} onMouseLeave={() => setHoverMenu(null)} className='px-2'>
-                {items}
-                {hoverMenu === items && (
-                  <div className='fixed left-0 w-screen h-1/4 mt-[1rem]'>
-                    <MenuDropDown keys = {items} content={menuItems[hoverMenu]} image={menuImages[hoverMenu]}/>
-                  </div>
-                )} 
-              </li>
+                <li keys = {items} className='relative text-p' onMouseEnter={() => setHoverMenu(items)} >
+                  {items}
+                  {hoverMenu === items && (
+                    <div className='fixed left-0 w-screen h-1/4 mt-[1rem]' onMouseLeave={() => setHoverMenu(null)}>
+                      <MenuDropDown keys = {items} content={menuItems[hoverMenu]} image={menuImages[hoverMenu]}/>
+                    </div>
+                  )} 
+                </li>
             ))} 
           </ul>
 
-          <div className='flex gap-4 bg-[#1A1A1A] px-3 rounded-lg'>
+          <div className='flex gap-4 bg-dark-bgSecondary py-1 px-5 min-w-62.5 rounded-lg'>
             <button className='flex gap-2 items-center'>All<img src={itemImages.Dropdown} /></button>
-            <input className='bg-[#1A1A1A] text-[#797979] p-1 pr-28' placeholder='Search IMDb'></input>
+            <input className='bg-dark-bgSecondary text-dark-textSecondary pr-28' placeholder='Search IMDb'></input>
             <img src={itemImages.Search} />
           </div> 
 
           <button className='flex gap-2 items-center'><img src={itemImages.Bookmark} />Watchlist</button>
           <button className='flex gap-2 items-center'><img src={itemImages.User}/>User</button>
-          <div className='flex gap-3'>
+          <div className='flex gap-3.5'>
             <button className='flex gap-2 items-center'>EN<img src={itemImages.Dropdown} /></button>
             <div
               onMouseEnter={() => setHoverTheme(true)}
