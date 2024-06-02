@@ -13,7 +13,7 @@ export default function NavBar() {
 
   return (
     <>
-      <nav className='flex fixed text-dark-textPrimary bg-dark-bgNav py-3 justify-center items-center w-full'>
+      <nav className='flex text-dark-textPrimary bg-dark-bgNav py-3 justify-center items-center w-full'>
         <div className='flex justify-between items-center gap-6'>
           <img src={itemImages.Logo}/>
           <ul className='relative flex gap-5'>
