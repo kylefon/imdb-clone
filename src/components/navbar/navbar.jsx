@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import "D:/projects/imdb-clone/src/index.css"
+import "../../index.css";
 import { itemImages } from './itemImages';
 import { menuImages } from './menuImages'; 
 import { menuItems } from './menuItems';
@@ -13,19 +13,19 @@ export default function NavBar() {
 
   return (
     <>
-      <nav className='flex text-dark-textPrimary bg-dark-bgNav py-3 justify-center items-center'>
+      <nav className='flex fixed text-dark-textPrimary bg-dark-bgNav py-3 justify-center items-center w-full'>
         <div className='flex justify-between items-center gap-6'>
           <img src={itemImages.Logo}/>
           <ul className='relative flex gap-5'>
             {Object.keys(menuItems).map((items) => (
-                <li keys = {items} className='relative text-p' onMouseEnter={() => setHoverMenu(items)} >
-                  {items}
-                  {hoverMenu === items && (
-                    <div className='fixed left-0 w-screen h-1/4 mt-[1rem]' onMouseLeave={() => setHoverMenu(null)}>
-                      <MenuDropDown keys = {items} content={menuItems[hoverMenu]} image={menuImages[hoverMenu]}/>
-                    </div>
-                  )} 
-                </li>
+              <li keys = {items} className='relative text-p' onMouseEnter={() => setHoverMenu(items)} onMouseLeave={() => setHoverMenu(null)}>
+                {items}
+                {hoverMenu === items && (
+                  <div className='fixed left-0 mt-[1rem] w-screen' >
+                    <MenuDropDown keys = {items} content={menuItems[hoverMenu]} image={menuImages[hoverMenu]}/>
+                  </div>
+                )} 
+              </li>
             ))} 
           </ul>
 
