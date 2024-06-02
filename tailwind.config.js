@@ -19,6 +19,7 @@ export default {
         bgPrimary: '#0E0E0E',
         bgSecondary: '#1A1A1A',
         bgNav: '#080808',
+        white: '#FFFFFF'
       }
     },
     fontSize: {
