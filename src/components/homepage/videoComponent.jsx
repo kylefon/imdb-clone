@@ -3,8 +3,8 @@ import playButton from './assets/transparent_play.svg';
 export default function VideoComponent({ background, main, title, caption, time }) {
     return ( 
         <div className='relative text-dark-textPrimary h-[183px]'>
-            <div className='brightness-50'>
-                <img src={background} className='rou3ded-xl h-[183px] w-full' />
+            <div className='brightness-[0.3]'>
+                <img src={background} className='rounded-xl h-[183px] w-full' />
             </div>
             <img src={main} className='absolute h-36 top-5 left-4 rounded-xl'/>
             <div className='absolute top-5 left-32 right-3'> 

@@ -18,7 +18,7 @@ export default function NavBar() {
           <img src={itemImages.Logo}/>
           <ul className='relative flex gap-5'>
             {Object.keys(menuItems).map((items) => (
-              <li keys = {items} className='relative text-p' onMouseEnter={() => setHoverMenu(items)} onMouseLeave={() => setHoverMenu(null)}>
+              <li key = {items} className='relative text-p' onMouseEnter={() => setHoverMenu(items)} onMouseLeave={() => setHoverMenu(null)}>
                 {items}
                 {hoverMenu === items && (
                   <div className='fixed left-0 mt-[1rem] w-screen' >
