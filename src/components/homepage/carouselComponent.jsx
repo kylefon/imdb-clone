@@ -1,12 +1,14 @@
 import playButton from './assets/transparent_play.svg';
+import bookmark from './assets/bookmark.svg';
 import rightButton from './assets/right-carousel.svg';
 import leftButton from './assets/left-carousel.svg';
 import { featuredVideosList } from './featuredImages.jsx';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function CarouselComponent() {
     const [slide, setSlide] = useState(0);
-    
+    const timeoutRef = useRef(null);
+
     const nextSlide = () => {
         setSlide(slide === Object.keys(featuredVideosList).length - 1 ? 0 : slide + 1);
     }
@@ -14,7 +16,17 @@ export default function CarouselComponent() {
     const prevSlide = () => {
         setSlide(slide === 0 ? Object.keys(featuredVideosList).length - 1 : slide - 1);
     }
-    
+
+    useEffect(() => {
+        clearTimeout(timeoutRef.current);
+
+        timeoutRef.current = setTimeout(() => {
+            nextSlide();
+        }, 5500);
+
+        return () => clearTimeout(timeoutRef.current);
+    }, [slide])
+
    let carouselStyle = 'relative text-dark-textPrimary';
    let indicatorStyle = 'h-3.5 w-3.5 rounded-full bg-gray';
  
@@ -24,12 +36,13 @@ export default function CarouselComponent() {
                 <div key={index} className={slide === index ? carouselStyle : `${carouselStyle} hidden`}>
                     <img src={featuredVideosList[column].Background} className='text-dark-textPrimary bg-cover bg-center rounded-lg' />
                     <div className='absolute left-6 top-[264px] flex items-end gap-[30px]'>
-                        <img src={featuredVideosList[column].Main} alt='Poster' className='rounded-lg'/>
+                        <img src={featuredVideosList[column].Main} alt='Poster' className='rounded-lg relative'/>
+                        <img className='absolute top-0 px-3' src={bookmark} />
                         <div className='flex items-center gap-[23px]'>
                             <img src={playButton} alt='Play Button' className='h-[143px]' />
                             <div>
-                                <h1 className='text-h2'>{featuredVideosList[column].Title}</h1>
-                                <h2 className='text-h3 text-gray'>{featuredVideosList[column].Caption}</h2>
+                                <h1 className='text-h1'>{featuredVideosList[column].Title}</h1>
+                                <h2 className='text-h2 text-gray opacity-40'>{featuredVideosList[column].Caption}</h2>
                             </div>
                         </div>
                     </div>
