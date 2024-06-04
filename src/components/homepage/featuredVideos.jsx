@@ -21,5 +21,4 @@ export default function FeaturedVideos() {
             </div>
         </div>
     )
-    // gap-26px
 }

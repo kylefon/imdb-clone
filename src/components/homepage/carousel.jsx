@@ -1,12 +1,12 @@
-import { featuredVideosList } from './featuredImages.jsx';
 import CarouselComponent from './carouselComponent';
+import FeaturedVideos from './featuredVideos'
 
 export default function Carousel() {
+
     return (
-    <div>
-        {Object.keys(featuredVideosList).map((column, index) => (
-            <CarouselComponent key={index} background={featuredVideosList[column].Background} main={featuredVideosList[column].Main} title={featuredVideosList[column].Title} caption={featuredVideosList[column].Caption}/>
-        ))}
-    </div>
+        <div className='flex justify-center gap-6 items-start p-[50px]'>
+            <CarouselComponent />
+            <FeaturedVideos />
+        </div>
     )
 }

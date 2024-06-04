@@ -20,7 +20,8 @@ export default {
         bgSecondary: '#1A1A1A',
         bgNav: '#080808',
         white: '#FFFFFF'
-      }
+      }, 
+      gray: '#A3A3A3'
     },
     fontSize: {
       h1: '36',
@@ -32,6 +33,13 @@ export default {
     extend: {
         minWidth: {
         "62.5": '15.625rem', 
+      },
+      fontSize: {
+        h1: '36px',
+        h2: '28px',
+        h3: '20px',
+        h5: '18px',
+        p: '16px'
       }
     },
   },
