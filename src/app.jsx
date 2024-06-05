@@ -1,15 +1,13 @@
 import NavBar from './components/navbar/navbar'
 import Carousel from './components/homepage/hero/carousel'
-import FeaturedToday from './components/homepage/featuredToday/featuredToday'
-import TopPicks from './components/homepage/featuredToday/topPicks'
+import Features from './components/homepage/featuredToday/features'
 
 export default function App() {
     return (
         <div>
             <NavBar />
             <Carousel/>
-            <FeaturedToday />
-            <TopPicks />
+            <Features />
         </div> 
     )  
 }

@@ -8,7 +8,7 @@ export default function VerticalTitleCard({ data }) {
     return (
         <div className='flex text-dark-textPrimary gap-[20px]'>
             {Object.keys(data).map((column, index) => 
-                <div key={index} className='bg-gray-500 p-3 rounded-lg flex flex-col gap-[17px]'>
+                <div key={index} className='bg-gray p-3 rounded-lg flex flex-col gap-[17px]'>
                     <div className='flex relative gap-[17px]'>
                         <img src={data[column].Poster} className='rounded-lg'/>
                         <img src={bookmark} className='absolute top-0 px-5' />

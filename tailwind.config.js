@@ -35,11 +35,15 @@ export default {
         "62.5": '15.625rem', 
       },
       fontSize: {
+        header: '235px',
         h1: '36px',
         h2: '28px',
         h3: '20px',
         h5: '18px',
         p: '16px'
+      },
+      fontFamily: {
+        'roboto-condensed': ['"Roboto Condensed"', 'sans-serif']
       }
     },
   },
