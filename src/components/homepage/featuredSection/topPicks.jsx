@@ -7,8 +7,9 @@ import { topPicks } from './data/topPicks'
 
 export default function TopPicks() {
     return (
-        <div className="flex relative item-center justify-center">
-            <div className="flex flex-col gap-[30px] w-[1350px]">
+        <div className="flex relative item-center justify-center mt-[120px]">
+            <div className="font-roboto-condensed font-black text-header text-dark-textPrimary opacity-10 absolute -top-16 leading-none">What to Watch</div>
+            <div className="flex flex-col gap-[30px] w-[1350px] relative">
                 <FeaturedHeader text={
                     <div>
                         <div className="flex items-center gap-[10px]">
