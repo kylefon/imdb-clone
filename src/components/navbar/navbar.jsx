@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import "../../index.css";
-import { itemImages } from './itemImages';
-import { menuImages } from './menuImages'; 
-import { menuItems } from './menuItems';
+import { itemImages } from './data/itemImages';
+import { menuItems } from './data/menuItems';
 import MenuDropDown from './menuDropdown';
 import ThemeDropDown from './themeDropdown';
 
@@ -12,23 +11,19 @@ export default function NavBar() {
   const [hoverTheme, setHoverTheme] = useState(false);
 
   return (
-    <>
-      <nav className='flex text-dark-textPrimary bg-dark-bgNav py-3 justify-center items-center w-full'>
+    <div className='z-[100]'>
+      <nav className='flex text-dark-textPrimary bg-dark-bgNav py-3 justify-center items-center'>
         <div className='flex justify-between items-center gap-6'>
           <img src={itemImages.Logo}/>
           <ul className='relative flex gap-5'>
             {Object.keys(menuItems).map((items) => (
-              <li key = {items} className='relative text-p' onMouseEnter={() => setHoverMenu(items)} onMouseLeave={() => setHoverMenu(null)}>
+             <>
+             <li key = {items} className='relative text-p' onMouseEnter={() => setHoverMenu(items)} onMouseLeave={() => setHoverMenu(null)}>
                 {items}
-                {hoverMenu === items && (
-                  <div className='fixed left-0 mt-[1rem] w-screen' >
-                    <MenuDropDown keys = {items} content={menuItems[hoverMenu]} image={menuImages[hoverMenu]}/>
-                  </div>
-                )} 
               </li>
+            </>
             ))} 
           </ul>
-
           <div className='flex gap-4 bg-dark-bgSecondary py-1 px-5 min-w-62.5 rounded-lg'>
             <button className='flex gap-2 items-center'>All<img src={itemImages.Dropdown} /></button>
             <input className='bg-dark-bgSecondary text-dark-textSecondary pr-28' placeholder='Search IMDb'></input>
@@ -54,6 +49,9 @@ export default function NavBar() {
           </div>
         </div>
       </nav>
-    </>
+      {hoverMenu && (
+        <MenuDropDown currentMenu={hoverMenu}/>
+      )}
+    </div>
   )
 }

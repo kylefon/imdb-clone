@@ -1,4 +1,4 @@
-import { featuredVideosList } from './featuredImages.jsx';
+import { featuredVideosList } from './data/featuredImages.jsx';
 import BrowseTrailerButton from './assets/browse_trailers.svg';
 import VideoComponent from './videoComponent.jsx';
 

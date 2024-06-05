@@ -1,9 +1,9 @@
-import wolfsImage from './assets/clooneyandpitt.jpg';
-import wolfsPoster from './assets/wolfsPoster.jpg';
-import deadpoolandwolv from './assets/deadpool&wolverine.jpg';
-import summerPoster from './assets/whattowatch.jpg';
-import TuaBg from './assets/umbrellaAcademy.jpg';
-import TuaPoster from './assets/umbrellaPoster.jpg';
+import wolfsImage from '../assets/clooneyandpitt.jpg';
+import wolfsPoster from '../assets/wolfsPoster.jpg';
+import deadpoolandwolv from '../assets/deadpool&wolverine.jpg';
+import summerPoster from '../assets/whattowatch.jpg';
+import TuaBg from '../assets/umbrellaAcademy.jpg';
+import TuaPoster from '../assets/umbrellaPoster.jpg';
 
 export const featuredVideosList = {
     1: {

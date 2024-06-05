@@ -2,11 +2,17 @@ import playButton from './assets/transparent_play.svg';
 import bookmark from './assets/bookmark.svg';
 import rightButton from './assets/right-carousel.svg';
 import leftButton from './assets/left-carousel.svg';
-import { featuredVideosList } from './featuredImages.jsx';
+import lowRightButton from './assets/right-carousel-lowOpacity.svg';
+import lowLeftButton from './assets/left-carousel-lowOpacity.svg';
+import { featuredVideosList } from './data/featuredImages.jsx';
 import { useEffect, useRef, useState } from 'react';
 
 export default function CarouselComponent() {
     const [slide, setSlide] = useState(0);
+    const [isLeftHovered, setIsLeftHovered] = useState(false);
+    const [isRightHovered, setIsRightHovered] = useState(false);
+    const [dominantColors, setDominantColors] = useState([]);
+
     const timeoutRef = useRef(null);
 
     const nextSlide = () => {
@@ -29,12 +35,45 @@ export default function CarouselComponent() {
 
    let carouselStyle = 'relative text-dark-textPrimary';
    let indicatorStyle = 'h-3.5 w-3.5 rounded-full bg-gray';
+
+   const getDominantColor = (imageSrc, callback) => {
+    const image = new Image();
+    image.crossOrigin = "Anonymous"; 
+  
+    image.onload = () => {
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d");
+      context.drawImage(image, 0, 0, 1, 1);
+      const [r, g, b, a] = context.getImageData(0, 0, 1, 1).data;
+      const color = `rgba(${r},${g},${b},${a})`;
+      callback(color);
+    };
+  
+    image.src = imageSrc;
+  };
+  
+
+  useEffect(() => {
+    Object.values(featuredVideosList).forEach((image, index) => {
+      getDominantColor(image.Background, (color) => {
+        setDominantColors((prevColors) => {
+          const newColors = [...prevColors];
+          newColors[index] = color;
+          return newColors;
+        });
+      });
+    });
+  }, []);
+    
  
     return (
         <div className='relative '>
             {Object.keys(featuredVideosList).map((column, index) => (
                 <div key={index} className={slide === index ? carouselStyle : `${carouselStyle} hidden`}>
-                    <img src={featuredVideosList[column].Background} className='text-dark-textPrimary bg-cover bg-center rounded-lg' />
+                    <img src={featuredVideosList[column].Background} className='text-dark-textPrimary rounded-lg' />
+                    {dominantColors[index] && (
+                        <div style={{ backgroundColor: dominantColors[index] }}></div>
+                    )}
                     <div className='absolute left-6 top-[264px] flex items-end gap-[30px]'>
                         <img src={featuredVideosList[column].Main} alt='Poster' className='rounded-lg relative'/>
                         <img className='absolute top-0 px-3' src={bookmark} />
@@ -55,8 +94,22 @@ export default function CarouselComponent() {
                     ))} 
                 </div>
                 <div className='flex gap-[5px]'>
-                    <button onClick={prevSlide}><img src={leftButton} alt='Left Button' /></button>
-                    <button onClick={nextSlide}><img src={rightButton} alt='Right Button'/></button>
+                    <button 
+                        onClick={prevSlide} 
+                        onMouseEnter={() => setIsLeftHovered(true)} 
+                        onMouseLeave={() => setIsLeftHovered(false)}>
+                            { isLeftHovered ? <img src={leftButton} alt='Left Button' /> : 
+                            <img src={lowLeftButton} alt='Left Button' />
+                            }
+                    </button>
+                    <button 
+                        onClick={nextSlide} 
+                        onMouseEnter={() => setIsRightHovered(true)} 
+                        onMouseLeave={() => setIsRightHovered(false)}>
+                            { isRightHovered ? <img src={rightButton} alt='Left Button' /> : 
+                            <img src={lowRightButton} alt='Left Button' />
+                            }
+                    </button>
                 </div>
             </div>
         </div>
