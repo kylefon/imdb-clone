@@ -1,19 +1,27 @@
 import FeaturedTodayCard from "./featuredTodayCard";
 import FeaturedHeader from "./featuredHeader";
 import rightArrow from './assets/arrow-right.svg'
+import VerticalTitleCard from "./verticalTitleCard";
+import { topPicks } from './data/topPicks'
 
-export default function FeaturedToday() {
+
+export default function TopPicks() {
     return (
         <div className="flex item-center justify-center">
-            <div className="flex flex-col gap-[30px] w-[1350px] ">
+            <div className="flex flex-col gap-[30px] w-[1350px]">
                 <FeaturedHeader text={
-                    <>
-                        <div className='h-1.5 w-1.5 rounded-full bg-light-yellow'></div>
-                        <h2 className="text-dark-textPrimary text-h2">Top Picks</h2>
-                        <img src={rightArrow} />
-                    </>
+                    <div className="">
+                        <div className="flex items-center gap-[10px]">
+                            <div className='h-1.5 w-1.5 rounded-full bg-light-yellow'></div>
+                            <h2 className="text-dark-textPrimary text-h2">Top Picks</h2>
+                            <img src={rightArrow} />
+                        </div>
+                        <div>
+                            <p className="text-dark-textSecondary text-p">TV shows and movies just for you</p>
+                        </div>
+                    </div>
                 }/>
-                <FeaturedTodayCard />
+                <VerticalTitleCard data={topPicks} />
             </div>
         </div>
     )
