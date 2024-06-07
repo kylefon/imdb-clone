@@ -1,10 +1,11 @@
-import FeaturedHeader from "./featuredHeader";
-import rightArrow from './assets/arrow-right.svg'
-import VerticalTitleCard from "./verticalTitleCard";
-import { topPicks } from './data/topPicks'
+import FeaturedHeader from "../featuredHeader";
+import rightArrow from '../assets/arrow-right.svg'
+import VerticalTitleCard from "../verticalTitleCard";
+import { topPicks } from '../data/topPicks'
 
 
 export default function TopPicks() {
+    
     return (
         <div className="flex relative item-center justify-center mt-[120px]">
             <div className="font-roboto-condensed font-black text-header text-dark-textPrimary opacity-10 absolute -top-16 leading-none">What to Watch</div>

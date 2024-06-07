@@ -9,26 +9,26 @@ export const exploreList = {
     1: {
         Main: garfield,
         Title: 'The Garfield Movie',
-        BoxOffice: '$1.1M',
-        Stars: '8.9'
+        BoxOffice: '$14M',
+        Stars: '5.8'
     }, 
     2: {
         Main: furiosa,
         Title: 'Furiosa: A Mad Max Saga',
-        BoxOffice: '$1.1M',
-        Stars: '8.9'
+        BoxOffice: '$11M',
+        Stars: '7.9'
     }, 
     3: {
         Main: ifMovie,
         Title: 'IF',
         BoxOffice: '$1.1M',
-        Stars: '8.9'
+        Stars: '6.7'
     }, 
     4: {
         Main: fallout,
         Title: 'Fallout',
         BoxOffice: '$1.1M',
-        Stars: '8.9'
+        Stars: '8.4'
     }, 
     5: {
         Main: gentlemen,
@@ -40,6 +40,6 @@ export const exploreList = {
         Main: sugar,
         Title: 'Sugar',
         BoxOffice: '$1.1M',
-        Stars: '8.9'
+        Stars: '7.5'
     }, 
 }

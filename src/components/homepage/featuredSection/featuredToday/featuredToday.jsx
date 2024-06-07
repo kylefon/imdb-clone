@@ -1,5 +1,5 @@
-import FeaturedTodayCard from "./featuredTodayCard";
-import FeaturedHeader from "./featuredHeader";
+import FeaturedTodayCard from "../featuredTodayCard";
+import FeaturedHeader from "../featuredHeader";
 
 export default function FeaturedToday() {
     return (

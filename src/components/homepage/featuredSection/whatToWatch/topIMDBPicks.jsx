@@ -1,8 +1,8 @@
-import FeaturedTodayCard from "./featuredTodayCard";
-import FeaturedHeader from "./featuredHeader";
-import rightArrow from './assets/arrow-right.svg'
-import VerticalTitleCard from "./verticalTitleCard";
-import { topPicks } from './data/topPicks'
+import FeaturedTodayCard from "../featuredTodayCard";
+import FeaturedHeader from "../featuredHeader";
+import rightArrow from '../assets/arrow-right.svg'
+import VerticalTitleCard from "../verticalTitleCard";
+import { topPicks } from '../data/topPicks'
 
 
 export default function TopIMDBPicks() {

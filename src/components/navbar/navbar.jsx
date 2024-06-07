@@ -16,12 +16,10 @@ export default function NavBar() {
         <div className='flex justify-between items-center gap-6'>
           <img src={itemImages.Logo}/>
           <ul className='relative flex gap-5'>
-            {Object.keys(menuItems).map((items) => (
-             <>
-             <li key = {items} className='relative text-p' onMouseEnter={() => setHoverMenu(items)} onMouseLeave={() => setHoverMenu(null)}>
+            {Object.keys(menuItems).map((items, index) => (
+             <li key = {index} className='relative text-p' onMouseEnter={() => setHoverMenu(items)} onMouseLeave={() => setHoverMenu(null)}>
                 {items}
               </li>
-            </>
             ))} 
           </ul>
           <div className='flex gap-4 bg-dark-bgSecondary py-1 px-5 min-w-62.5 rounded-lg'>

@@ -1,7 +1,7 @@
-import FeaturedHeader from "./featuredHeader";
+import FeaturedHeader from "../featuredHeader";
 import StreamingSites from "./streamingSites";
-import VerticalTitleCardNoTrailer from "./verticalTitleCardNoTrailer";
-import { topPicks } from "./data/topPicks";
+import VerticalTitleCardNoTrailer from "../verticalTitleCardNoTrailer";
+import { topPicks } from "../data/topPicks";
 
 export default function StreamingNow() {
     return (

@@ -1,9 +1,12 @@
-import FeaturedToday from './featuredToday'
-import TopPicks from './topPicks'
-import TopIMDBPicks from './topIMDBPicks'
-import IMDbOriginals from './imdbOriginals'
-import StreamingNow from './streamingNow'
-import ExploreSection from './exploreSection'
+import FeaturedToday from './featuredToday/featuredToday'
+import TopPicks from './whatToWatch/topPicks'
+import TopIMDBPicks from './whatToWatch/topIMDBPicks'
+import IMDbOriginals from './videos/imdbOriginals'
+import StreamingNow from './streamingNow/streamingNow'
+import ExploreSection from './explore/exploreSection'
+import ComingSoon from './explore/comingSoon'
+import BornToday from './explore/bornToday'
+import TopNews from './explore/topNews'
 
 export default function Features() {
     return (
@@ -14,6 +17,9 @@ export default function Features() {
             <IMDbOriginals />
             <StreamingNow />
             <ExploreSection />
+            <ComingSoon />
+            <BornToday />
+            <TopNews />
         </div> 
     )
 }

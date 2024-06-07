@@ -1,7 +1,7 @@
-import FeaturedHeader from "./featuredHeader";
-import rightArrow from './assets/arrow-right.svg'
-import { exploreList } from "./data/exploreList";
-import ExploreCard from "./exploreCard";
+import FeaturedHeader from "../featuredHeader";
+import rightArrow from '../assets/arrow-right.svg'
+import { exploreList } from "../data/exploreList";
+import ExploreCard from "../exploreCard";
 
 export default function ExploreSection() {
     return (

@@ -1,6 +1,6 @@
-import HorizontalVideoCard from "./horizontalVideoCard";
-import FeaturedHeader from "./featuredHeader";
-import { IMDbOriginalsList } from "./data/imdbOriginalsList";
+import HorizontalVideoCard from "../horizontalVideoCard";
+import FeaturedHeader from "../featuredHeader";
+import { IMDbOriginalsList } from "../data/imdbOriginalsList";
 
 export default function IMDbOriginals() {
     return (
