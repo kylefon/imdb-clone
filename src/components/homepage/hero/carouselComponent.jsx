@@ -7,7 +7,7 @@ import lowLeftButton from './assets/left-carousel-lowOpacity.svg';
 import { featuredVideosList } from './data/featuredImages.jsx';
 import { useEffect, useRef, useState } from 'react';
 
-export default function CarouselComponent() {
+export default function CarouselComponent({ setDominantColor, setSlideIndex }) {
     const [slide, setSlide] = useState(0);
     const [isLeftHovered, setIsLeftHovered] = useState(false);
     const [isRightHovered, setIsRightHovered] = useState(false);
@@ -15,18 +15,22 @@ export default function CarouselComponent() {
     const timeoutRef = useRef(null);
 
     const nextSlide = () => {
-        setSlide(slide === Object.keys(featuredVideosList).length - 1 ? 0 : slide + 1);
+        const nextSlideIndex = slide === Object.keys(featuredVideosList).length - 1 ? 0 : slide + 1;
+        setSlide(nextSlideIndex);
+        setSlideIndex(nextSlideIndex);
     }
 
     const prevSlide = () => {
-        setSlide(slide === 0 ? Object.keys(featuredVideosList).length - 1 : slide - 1);
+        const prevSlideIndex = slide === 0 ? Object.keys(featuredVideosList).length - 1 : slide - 1;
+        setSlide(prevSlideIndex);
+        setSlideIndex(prevSlideIndex);
     }
 
     useEffect(() => {
         clearTimeout(timeoutRef.current);
 
         timeoutRef.current = setTimeout(() => {
-            nextSlide();
+            nextSlide()
         }, 5500);
 
         return () => clearTimeout(timeoutRef.current);
@@ -50,15 +54,15 @@ export default function CarouselComponent() {
   
     image.src = imageSrc;
   };
-  
 
-//   useEffect(() => {
-//     Object.values(featuredVideosList).forEach((image, index) => {
-//       getDominantColor(image.Background, (color) => {
-//         setDominantColor(color);
-//       });
-//     });
-//   }, []);
+    useEffect(() => {
+        Object.values(featuredVideosList).forEach((image, index) => {
+            getDominantColor(image.Background, (color) => {
+                setDominantColor(prevColors => [...prevColors, color]); // Collect dominant colors
+            });
+        });
+    }, [setDominantColor]);
+  
     
  
     return (
