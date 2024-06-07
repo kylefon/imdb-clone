@@ -1,6 +1,8 @@
 import FeaturedToday from './featuredToday'
 import TopPicks from './topPicks'
 import TopIMDBPicks from './topIMDBPicks'
+import IMDbOriginals from './imdbOriginals'
+import StreamingNow from './streamingNow'
 
 export default function Features() {
     return (
@@ -8,6 +10,8 @@ export default function Features() {
             <FeaturedToday/>
             <TopPicks />
             <TopIMDBPicks />
+            <IMDbOriginals />
+            <StreamingNow />
         </div> 
     )
 }
