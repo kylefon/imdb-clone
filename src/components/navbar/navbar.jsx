@@ -11,9 +11,9 @@ export default function NavBar() {
   const [hoverTheme, setHoverTheme] = useState(false);
 
   return (
-    <div className='z-[100]'>
+    <div>
       <nav className='flex text-dark-textPrimary bg-dark-bgNav py-3 justify-center items-center'>
-        <div className='flex justify-between items-center gap-6'>
+        <div className='flex justify-between items-center gap-6 w-[1350px]'>
           <img src={itemImages.Logo}/>
           <ul className='relative flex gap-5'>
             {Object.keys(menuItems).map((items, index) => (
@@ -30,7 +30,7 @@ export default function NavBar() {
 
           <button className='flex gap-2 items-center'><img src={itemImages.Bookmark} />Watchlist</button>
           <button className='flex gap-2 items-center'><img src={itemImages.User}/>User</button>
-          <div className='flex gap-3.5'>
+          <div className='flex gap-5'>
             <button className='flex gap-2 items-center'>EN<img src={itemImages.Dropdown} /></button>
             <div
               onMouseEnter={() => setHoverTheme(true)}
@@ -39,9 +39,7 @@ export default function NavBar() {
             >
               <img src={itemImages.Theme}/>
               {hoverTheme && (
-                <div className='absolute left-1/2 -translate-x-1/2 p-4'>
-                  <ThemeDropDown />
-                </div>
+                <ThemeDropDown />
               )}
             </div>
           </div>

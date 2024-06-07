@@ -2,7 +2,7 @@ export default function HorizontalNewsCard({ data }) {
     return (
         <div className="grid grid-cols-3 gap-[20px]">
             {Object.keys(data).map((column, index) => (
-                <div className="flex bg-gray/[0.05] gap-[14px] p-[20px] rounded-lg">
+                <div key={index} className="flex bg-gray/[0.05] gap-[14px] p-[20px] rounded-lg">
                     <img src={data[column].Image} className="rounded-lg w-[180px]"/>
                     <div className="flex flex-col gap-[10px]">
                         <div className="flex flex-col gap-[10px]">
