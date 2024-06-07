@@ -1,7 +1,7 @@
-import HorizontalVideoCard from "./horizontalVideoCard";
 import FeaturedHeader from "./featuredHeader";
-import { IMDbOriginalsList } from "./data/imdbOriginalsList";
 import StreamingSites from "./streamingSites";
+import VerticalTitleCardNoTrailer from "./verticalTitleCardNoTrailer";
+import { topPicks } from "./data/topPicks";
 
 export default function StreamingNow() {
     return (
@@ -11,6 +11,7 @@ export default function StreamingNow() {
                 <FeaturedHeader text={
                     <StreamingSites />
                 }/>
+                <VerticalTitleCardNoTrailer data={topPicks} />
             </div>
         </div>
     )

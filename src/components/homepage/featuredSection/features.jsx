@@ -3,6 +3,7 @@ import TopPicks from './topPicks'
 import TopIMDBPicks from './topIMDBPicks'
 import IMDbOriginals from './imdbOriginals'
 import StreamingNow from './streamingNow'
+import ExploreSection from './exploreSection'
 
 export default function Features() {
     return (
@@ -12,6 +13,7 @@ export default function Features() {
             <TopIMDBPicks />
             <IMDbOriginals />
             <StreamingNow />
+            <ExploreSection />
         </div> 
     )
 }
