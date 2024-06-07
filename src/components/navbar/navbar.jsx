@@ -11,8 +11,8 @@ export default function NavBar() {
   const [hoverTheme, setHoverTheme] = useState(false);
 
   return (
-    <div>
-      <nav className='flex text-dark-textPrimary bg-dark-bgNav py-3 justify-center items-center'>
+    <div className='sticky top-0 z-50'>
+      <nav className='flex text-dark-textPrimary bg-dark-bgNav/[0.7] py-3 justify-center items-center'>
         <div className='flex justify-between items-center gap-6 w-[1350px]'>
           <img src={itemImages.Logo}/>
           <ul className='relative flex gap-5'>

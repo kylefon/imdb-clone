@@ -11,7 +11,6 @@ export default function CarouselComponent() {
     const [slide, setSlide] = useState(0);
     const [isLeftHovered, setIsLeftHovered] = useState(false);
     const [isRightHovered, setIsRightHovered] = useState(false);
-    const [dominantColors, setDominantColors] = useState([]);
 
     const timeoutRef = useRef(null);
 
@@ -53,27 +52,20 @@ export default function CarouselComponent() {
   };
   
 
-  useEffect(() => {
-    Object.values(featuredVideosList).forEach((image, index) => {
-      getDominantColor(image.Background, (color) => {
-        setDominantColors((prevColors) => {
-          const newColors = [...prevColors];
-          newColors[index] = color;
-          return newColors;
-        });
-      });
-    });
-  }, []);
+//   useEffect(() => {
+//     Object.values(featuredVideosList).forEach((image, index) => {
+//       getDominantColor(image.Background, (color) => {
+//         setDominantColor(color);
+//       });
+//     });
+//   }, []);
     
  
     return (
-        <div className='relative '>
+        <div className='relative'>
             {Object.keys(featuredVideosList).map((column, index) => (
                 <div key={index} className={slide === index ? carouselStyle : `${carouselStyle} hidden`}>
                     <img src={featuredVideosList[column].Background} className='text-dark-textPrimary rounded-lg' />
-                    {dominantColors[index] && (
-                        <div style={{ backgroundColor: dominantColors[index] }}></div>
-                    )}
                     <div className='absolute left-6 top-[264px] flex items-end gap-[30px]'>
                         <img src={featuredVideosList[column].Main} alt='Poster' className='rounded-lg relative'/>
                         <img className='absolute top-0 px-3' src={bookmark} />
