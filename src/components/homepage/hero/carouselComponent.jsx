@@ -11,6 +11,8 @@ export default function CarouselComponent({ setDominantColor, setSlideIndex }) {
     const [slide, setSlide] = useState(0);
     const [isLeftHovered, setIsLeftHovered] = useState(false);
     const [isRightHovered, setIsRightHovered] = useState(false);
+    const [dominantColors, setDominantColors] = useState([]);
+    const colorsFetched = useRef(false); 
 
     const timeoutRef = useRef(null);
 
@@ -56,20 +58,31 @@ export default function CarouselComponent({ setDominantColor, setSlideIndex }) {
   };
 
     useEffect(() => {
-        Object.values(featuredVideosList).forEach((image, index) => {
-            getDominantColor(image.Background, (color) => {
-                setDominantColor(prevColors => [...prevColors, color]); // Collect dominant colors
+        if (!colorsFetched.current) { 
+            Object.keys(featuredVideosList).forEach((image, index) => {
+                getDominantColor(featuredVideosList[image].Background, (color) => {
+                    if (!dominantColors.includes(color)) {
+                        setDominantColor(prevColors => [...prevColors, color]); //for background color 
+                        setDominantColors(prevColors => [...prevColors, color]); //for gradient
+                    }
+                });
             });
-        });
-    }, [setDominantColor]);
-  
+            colorsFetched.current = true; 
+        }
+    }, []); 
     
- 
+
     return (
         <div className='relative'>
             {Object.keys(featuredVideosList).map((column, index) => (
-                <div key={index} className={slide === index ? carouselStyle : `${carouselStyle} hidden`}>
+                <div key={index} className={slide === index ? carouselStyle : `${carouselStyle} hidden`} >
                     <img src={featuredVideosList[column].Background} className='text-dark-textPrimary rounded-lg' />
+
+                    <div className="absolute inset-0 flex flex-col justify-end">
+                        <div className="w-full h-full rounded-lg" style={{ background: `linear-gradient(to bottom, rgba(255, 255, 255, 0) 28%, ${dominantColors[index]} 150%)` }}>                            {/* This div will contain the gradient */}
+                        </div>
+                    </div>
+
                     <div className='absolute left-6 top-[264px] flex items-end gap-[30px]'>
                         <img src={featuredVideosList[column].Main} alt='Poster' className='rounded-lg relative'/>
                         <img className='absolute top-0 px-3' src={bookmark} />
