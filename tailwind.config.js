@@ -41,7 +41,8 @@ export default {
         h2: '28px',
         h3: '20px',
         h5: '18px',
-        p: '16px'
+        p: '16px',
+        footer: '12px'
       },
       fontFamily: {
         'roboto-condensed': ['"Roboto Condensed"', 'sans-serif']
