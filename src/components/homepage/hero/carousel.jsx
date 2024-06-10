@@ -9,7 +9,7 @@ export default function Carousel() {
 
     return (
         <div className="relative">
-            <div className='flex justify-center gap-6 items-start p-[50px] pb-[160px]'>
+            <div className='flex flex-col mdlg:flex-row justify-center gap-6 items-start p-3 pb-[160px]'>
                 <CarouselComponent setDominantColor={setDominantColor} setSlideIndex={setSlideIndex}/>
                 <FeaturedVideos />
             </div>

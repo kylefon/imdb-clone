@@ -4,6 +4,7 @@ import rightButton from './assets/right-carousel.svg';
 import leftButton from './assets/left-carousel.svg';
 import lowRightButton from './assets/right-carousel-lowOpacity.svg';
 import lowLeftButton from './assets/left-carousel-lowOpacity.svg';
+import BrowseTrailerButton from './assets/browse_trailers.svg';
 import { featuredVideosList } from './data/featuredImages.jsx';
 import { useEffect, useRef, useState } from 'react';
 
@@ -79,30 +80,35 @@ export default function CarouselComponent({ setDominantColor, setSlideIndex }) {
                     <img src={featuredVideosList[column].Background} className='text-dark-textPrimary rounded-lg' />
 
                     <div className="absolute inset-0 flex flex-col justify-end">
-                        <div className="w-full h-full rounded-lg" style={{ background: `linear-gradient(to bottom, rgba(255, 255, 255, 0) 28%, ${dominantColors[index]} 150%)` }}>                            {/* This div will contain the gradient */}
+                        <div className="w-full h-full rounded-lg" style={{ background: `linear-gradient(to bottom, rgba(255, 255, 255, 0) 28%, ${dominantColors[index]} 150%)` }}>                       
                         </div>
                     </div>
 
-                    <div className='absolute left-6 top-[264px] flex items-end gap-[30px]'>
-                        <img src={featuredVideosList[column].Main} alt='Poster' className='rounded-lg relative'/>
-                        <img className='absolute top-0 px-3' src={bookmark} />
-                        <div className='flex items-center gap-[23px]'>
-                            <img src={playButton} alt='Play Button' className='h-[143px]' />
-                            <div>
-                                <h1 className='text-h1'>{featuredVideosList[column].Title}</h1>
-                                <h2 className='text-h2 text-gray opacity-40'>{featuredVideosList[column].Caption}</h2>
+                    <div className='top-20 absolute left-6 flex items-end gap-[30px] flex flex-col justify-start top-[130px] sm:top-[264px]'>
+                        <div className='flex items-end gap-[30px]'>
+                            <img src={featuredVideosList[column].Main} alt='Poster' className='rounded-lg relative w-[100px] sm:w-[200px] md:w-auto'/>
+                            <img className='absolute top-0 px-1 sm:px-3' src={bookmark} />
+                            <div className='flex flex-col items-start sm:items-center sm:flex-row sm:gap-[23px]'>
+                                <img src={playButton} alt='Play Button' className='flex flex-start h-[50px] sm:h-[120px] md:h-[143px]' />
+                                <div className='gap-3'>
+                                    <h1 className='text-[14px] xs:text-[18px] sm:text-h2 md:text-h1'>{featuredVideosList[column].Title}</h1>
+                                    <h2 className='text-gray opacity-40 text-[12px] xs:text-[18px] sm:text-h3 md:text-h3'>{featuredVideosList[column].Caption}</h2>
+                                </div>
                             </div>
+                        </div>
+                        <div className='flex flex-start w-full'>
+                            <button className='flex left-0 mdlg:hidden'><img src={BrowseTrailerButton} className='h-[30px] sm:h-[40px] md:h-auto'/></button>
                         </div>
                     </div>
                 </div>
             ))}
             <div className='flex absolute gap-7 px-7 bottom-7 right-0 items-center'>
-                <div className='flex gap-[13px]'>
+                <div className='hidden sm:flex gap-[13px]'>
                     {Object.keys(featuredVideosList).map((indicator, indicatorIndex) => (
                         <div key={indicatorIndex} className={slide === indicatorIndex ? `${indicatorStyle} opacity-90` : `${indicatorStyle} opacity-40` }></div>
                     ))} 
                 </div>
-                <div className='flex gap-[5px]'>
+                <div className='hidden sm:flex gap-[5px]'>
                     <button 
                         onClick={prevSlide} 
                         onMouseEnter={() => setIsLeftHovered(true)} 
