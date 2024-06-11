@@ -51,6 +51,7 @@ export default {
       h3: '20',
       h5: '18',
       p: '16',
+      'responsive': 'clamp(48px, 5vw+1rem, 220px)'
     }, 
     extend: {
         minWidth: {

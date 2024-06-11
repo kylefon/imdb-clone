@@ -7,9 +7,9 @@ import { topPicks } from '../data/topPicks'
 export default function TopPicks() {
     
     return (
-        <div className="flex relative item-center justify-center mt-[100px]">
-            <div className="font-roboto-condensed font-black text-header text-dark-textPrimary opacity-10 absolute -top-16 leading-none">What to Watch</div>
-            <div className="flex flex-col gap-[30px] w-[1350px] relative">
+        <div className="flex relative item-center justify-center mt-[100px] w-full">
+            <div className="font-roboto-condensed font-black text-dark-textPrimary opacity-10 absolute -top-16 leading-none w-full text-[15vw] lg:text-[220px] flex justify-center">What to Watch</div>
+            <div className="flex flex-col gap-[30px] w-full relative">
                 <FeaturedHeader text={
                     <div>
                         <div className="flex items-center gap-[10px]">
@@ -22,7 +22,9 @@ export default function TopPicks() {
                         </div>
                     </div>
                 }/>
-                <VerticalTitleCard data={topPicks} />
+                <div className="overflow-x-hidden w-full">
+                    <VerticalTitleCard data={topPicks} />
+                </div>
             </div>
         </div>
     )

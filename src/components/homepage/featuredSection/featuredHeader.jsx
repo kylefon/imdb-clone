@@ -15,7 +15,7 @@ export default function FeaturedHeader({ text }) {
                 {text}
             </>
             </div>
-            <div className="flex gap-[5px]">
+            <div className="hidden lg:flex gap-[5px]">
                 <button onMouseEnter={() => setHoverLeftButton(true)} onMouseLeave={() => setHoverLeftButton(false)}>
                     {hoverLeftButton ? 
                         <img src={leftButton} /> :
