@@ -15,8 +15,8 @@ export default function Features() {
                 <FeaturedToday/>
                 <TopPicks />
                 <TopIMDBPicks />
-                {/* <IMDbOriginals />
-                <StreamingNow />
+                <IMDbOriginals />
+                {/* <StreamingNow />
                 <ExploreSection />
                 <ComingSoon />
                 <BornToday />

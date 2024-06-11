@@ -8,7 +8,7 @@ export default function TopPicks() {
     
     return (
         <div className="flex relative item-center justify-center mt-[100px] w-full">
-            <div className="font-roboto-condensed font-black text-dark-textPrimary opacity-10 absolute -top-16 leading-none w-full text-[15vw] lg:text-[220px] flex justify-center">What to Watch</div>
+            <div className="font-roboto-condensed font-black text-dark-textPrimary opacity-10 absolute -top-16 leading-none w-full flex text-center text-[90px] md:text-[15vw] lg:text-[220px] flex justify-center">What to Watch</div>
             <div className="flex flex-col gap-[30px] w-full relative">
                 <FeaturedHeader text={
                     <div>
