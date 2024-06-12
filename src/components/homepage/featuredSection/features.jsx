@@ -16,11 +16,11 @@ export default function Features() {
                 <TopPicks />
                 <TopIMDBPicks />
                 <IMDbOriginals />
-                {/* <StreamingNow />
+                <StreamingNow />
                 <ExploreSection />
                 <ComingSoon />
                 <BornToday />
-                <TopNews /> */}
+                <TopNews />
             </div>
         </div> 
     )

@@ -10,7 +10,7 @@ export default function FeaturedHeader({ text }) {
 
     return (
         <div className="flex justify-between">
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-2 items-center w-full">
             <>
                 {text}
             </>
