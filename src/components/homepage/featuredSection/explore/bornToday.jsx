@@ -4,7 +4,7 @@ import BornCelebrityCard from '../bornCelebrityCard';
 
  export default function BornToday() {
     return (
-        <div className="flex relative item-center justify-center">
+        <div className="flex relative item-center justify-center w-full">
             <div className="flex flex-col gap-[30px] w-[1350px] relative">
                 <FeaturedHeader text = {
                 <div>
@@ -18,7 +18,9 @@ import BornCelebrityCard from '../bornCelebrityCard';
                     </div>
                 </div>} 
                 />
-                <BornCelebrityCard />
+                <div className='w-full overflow-x-hidden'>
+                    <BornCelebrityCard />
+                </div>
             </div>
         </div>
     )

@@ -6,7 +6,7 @@ import ExploreCard from "../exploreCard";
 export default function ExploreSection() {
     return (
         <div className="flex relative item-center justify-center mt-[100px]">
-            <div className="font-roboto-condensed font-black text-header text-dark-textPrimary opacity-10 absolute -translate-y-[100px] leading-none">Explore</div>
+            <div className="font-roboto-condensed text-responsive font-black text-dark-textPrimary opacity-10 absolute -translate-y-[100px] leading-none">Explore</div>
             <div className="flex flex-col gap-[30px] w-[1350px] relative">
                 <div>
                     <div className="flex items-center gap-[10px]">

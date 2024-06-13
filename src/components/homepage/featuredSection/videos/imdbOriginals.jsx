@@ -18,7 +18,7 @@ export default function IMDbOriginals() {
                         </div>
                     </div>
                 }/>
-                <div className=" w-full">
+                <div className="w-full">
                     <HorizontalVideoCard data={IMDbOriginalsList} />
                 </div>
             </div>

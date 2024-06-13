@@ -4,12 +4,12 @@ import calendarIcon from './assets/calendar-icon.svg'
 
 export default function ComingSoonCard({ data }) {
     return (
-        <div className='flex gap-[26px]'>
+        <div className='flex gap-[26px] items-start overflow-x-auto whitespace-nowrap'>
             {Object.keys(data).map((column, index) => (
-                <div key={index} className='flex flex-col gap-[10px]'>
+                <div key={index} className='min-w-[30vh]'>
                     <div className="relative">
-                        <img src={data[column].Main} className="rounded-lg w-[342px]"/>
-                        <div className="absolute rounded-full bg-gray/[0.1] px-[20px] py-[10px] m-3 flex items-center gap-[12px] bottom-0">
+                        <img src={data[column].Main} className="rounded-lg"/>
+                        <div className="absolute rounded-full bg-gray/  [0.1] px-[20px] py-[10px] m-3 flex items-center gap-[12px] bottom-0">
                             <img src={playButton}/>
                             <div className="text-dark-textPrimary">{data[column].Time}</div>
                         </div>
@@ -23,7 +23,7 @@ export default function ComingSoonCard({ data }) {
                             </div>
                             <p>{data[column].Name}</p>
                         </div>
-                        <p className="text-dark-textPrimary text-p">{data[column].Title}</p>
+                        <p className="text-dark-textPrimary text-p whitespace-normal">{data[column].Title}</p>
                     </div>
                 </div>
             ))}

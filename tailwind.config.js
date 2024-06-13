@@ -45,14 +45,6 @@ export default {
       }, 
       gray: '#A3A3A3'
     },
-    fontSize: {
-      h1: '36',
-      h2: '28',
-      h3: '20',
-      h5: '18',
-      p: '16',
-      'responsive': 'clamp(48px, 5vw+1rem, 220px)'
-    }, 
     extend: {
         minWidth: {
         "62.5": '15.625rem', 
@@ -64,7 +56,8 @@ export default {
         h3: '20px',
         h5: '18px',
         p: '16px',
-        footer: '12px'
+        footer: '12px',
+        'responsive': 'clamp(6rem, 20vw, 15rem)',
       },
       fontFamily: {
         'roboto-condensed': ['"Roboto Condensed"', 'sans-serif']

@@ -5,8 +5,8 @@ import HorizontalNewsCard from '../horizontalNewsCard';
 
  export default function TopNews() {
     return (
-        <div className="flex relative item-center justify-center">
-            <div className="flex flex-col gap-[30px] w-[1350px] relative">
+        <div className="flex relative item-center justify-center w-full">
+            <div className="flex flex-col gap-[30px] w-[1350px] relative w-full">
                 <FeaturedHeader text = {
                 <div>
                     <div className="flex items-center gap-[10px]">
@@ -16,7 +16,9 @@ import HorizontalNewsCard from '../horizontalNewsCard';
                     </div>
                 </div>} 
                 />
-                <HorizontalNewsCard data={topNewsList} />
+                <div className='overflow-x-hidden w-full'>
+                    <HorizontalNewsCard data={topNewsList} />
+                </div>
             </div>
         </div>
     )

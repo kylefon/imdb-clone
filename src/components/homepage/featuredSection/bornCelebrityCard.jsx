@@ -11,7 +11,7 @@ export default function BornCelebrityCard() {
     }
 
     return (
-        <>
+        <div className='flex gap-[26px] items-start overflow-x-auto whitespace-nowrap'>
             {Object.keys(data).map((column, index) => (
                 <div key={index} className='flex flex-col gap-[12px]'>
                     <img src={data[column].Image} className='w-[181px] rounded-lg'/>
@@ -21,6 +21,6 @@ export default function BornCelebrityCard() {
                     </div>
                 </div>
             ))}
-        </>
+        </div>
     )
 }
