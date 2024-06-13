@@ -9,7 +9,7 @@ export default function App() {
             <NavBar />
             <Carousel/>
             <Features />
-            {/* <Footer /> */}
+            <Footer />
         </div> 
     )  
 }
