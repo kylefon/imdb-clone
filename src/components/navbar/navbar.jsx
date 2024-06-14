@@ -5,18 +5,21 @@ import { menuItems } from './data/menuItems';
 import MenuDropDown from './menuDropdown';
 import ThemeDropDown from './themeDropdown';
 import hamburgerMenu from './assets/hamburger.svg'
+import SideoutMenu from './sideoutMenu';
 
 export default function NavBar() {
 
   const [hoverMenu, setHoverMenu] = useState(null);
   const [hoverTheme, setHoverTheme] = useState(false);
+  const [sideoutMenu, setSideoutMenu] = useState(false);
+
 
   return (
     <div className='sticky top-0 z-50'>
       <nav className='flex text-dark-textPrimary bg-dark-bgNav/[0.7] p-3 justify-center items-center'>
         <div className='flex justify-between items-center w-[1350px] gap-5'>
           <div className='flex gap-6'>
-            <img src={hamburgerMenu} className='mdlg:hidden'/>
+            <img src={hamburgerMenu} className='mdlg:hidden'onClick={() => setSideoutMenu(!sideoutMenu)}/>
             <img src={itemImages.Logo}/>
             <ul className='relative flex gap-5 hidden mdlg:flex'>
               {Object.keys(menuItems).map((items, index) => (
@@ -67,6 +70,11 @@ export default function NavBar() {
       </nav>
       {hoverMenu && (
         <MenuDropDown currentMenu={hoverMenu}/>
+      )}
+      {sideoutMenu && (
+        <div className='mdlg:hidden'>
+          <SideoutMenu />
+        </div>
       )}
     </div>
   )
