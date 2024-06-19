@@ -5,8 +5,8 @@ import leftButton from './assets/left-carousel.svg';
 import lowRightButton from './assets/right-carousel-lowOpacity.svg';
 import lowLeftButton from './assets/left-carousel-lowOpacity.svg';
 import BrowseTrailerButton from './assets/browse_trailers.svg';
-import { featuredVideosList } from './data/featuredImages.jsx';
 import { useEffect, useRef, useState } from 'react';
+import { useFetchHeroData } from './useFetchHeroData';
 
 
 export default function CarouselComponent({ setDominantColor, setSlideIndex }) {
@@ -14,13 +14,12 @@ export default function CarouselComponent({ setDominantColor, setSlideIndex }) {
     const [isLeftHovered, setIsLeftHovered] = useState(false);
     const [isRightHovered, setIsRightHovered] = useState(false);
     const [dominantColors, setDominantColors] = useState([]);
-    const [carouselData, setCarouselData] = useState([]);
 
     const colorsFetched = useRef(false);
 
     const timeoutRef = useRef(null);
 
-    const apiKey = import.meta.env.VITE_API_KEY
+    const {heroData: carouselData} = useFetchHeroData();
 
     const nextSlide = () => {
         const nextSlideIndex = slide === Object.keys(carouselData).length - 1 ? 0 : slide + 1;
@@ -33,46 +32,6 @@ export default function CarouselComponent({ setDominantColor, setSlideIndex }) {
         setSlide(prevSlideIndex);
         setSlideIndex(prevSlideIndex);
     };
-
-    useEffect(() => {
-        clearTimeout(timeoutRef.current);
-
-        timeoutRef.current = setTimeout(() => {
-            nextSlide();
-        }, 5500);
-
-        return () => clearTimeout(timeoutRef.current);
-    }, [slide]);
-
-
-    useEffect(() => {
-        const fetchCarouselData = async () => {
-            const options = {
-                method: 'GET',
-                headers: {
-                    accept: 'application/json',
-                    Authorization: `Bearer ${apiKey}`
-                }
-            };
-
-            try {
-                const response = await fetch(`https://api.themoviedb.org/3/trending/all/day?language=en-US`, options);
-                if (!response.ok) {
-                    throw new Error('Failed to fetch movie videos');
-                }
-                const data = await response.json();
-                setCarouselData(data.results);
-                console.log(carouselData);
-            } catch (error) {
-                console.error('Error fetching movie videos:', error);
-            }
-        };
-
-        fetchCarouselData();
-    }, []);
-
-    let carouselStyle = 'relative text-dark-textPrimary';
-    let indicatorStyle = 'h-3.5 w-3.5 rounded-full bg-gray';
 
     const getDominantColor = (imageSrc, callback) => {
         const image = new Image();
@@ -89,10 +48,21 @@ export default function CarouselComponent({ setDominantColor, setSlideIndex }) {
 
         image.src = imageSrc;
     };
+    
+    useEffect(() => {
+        clearTimeout(timeoutRef.current);
+
+        timeoutRef.current = setTimeout(() => {
+            nextSlide();
+        }, 5500);
+
+        return () => clearTimeout(timeoutRef.current);
+    }, [slide]);
+
 
     useEffect(() => {
         if (!colorsFetched.current) {
-            Object.keys(carouselData).forEach((image, index) => {
+            (carouselData).forEach((image, index) => {
                 getDominantColor(carouselData[image].backdrop_path, (color) => {
                     if (!dominantColors.includes(color)) {
                         setDominantColor(prevColors => [...prevColors, color]); //for background color 
@@ -108,7 +78,7 @@ export default function CarouselComponent({ setDominantColor, setSlideIndex }) {
     return (
         <div className='relative'>
             {Object.keys(carouselData).map((column, index) => (
-                <div key={index} className={slide === index ? carouselStyle : `${carouselStyle} hidden`}>
+                <div key={index} className={slide === index ? 'relative text-dark-textPrimary' : 'relative text-dark-textPrimary hidden'}>
                     <img src={`https://image.tmdb.org/t/p/original${carouselData[column].backdrop_path}`} className='text-dark-textPrimary rounded-lg w-[1000px]' />
 
                     <div className="absolute inset-0 flex flex-col justify-end">
@@ -123,7 +93,8 @@ export default function CarouselComponent({ setDominantColor, setSlideIndex }) {
                             <div className='flex flex-col items-start sm:items-center sm:flex-row sm:gap-[23px]'>
                                 <img src={playButton} alt='Play Button' className='flex flex-start h-[50px] sm:h-[120px] md:h-[143px]' />
                                 <div className='gap-3'>
-                                    <h1 className='text-[18px] xs:text-h3 sm:text-h2 md:text-h1'>{carouselData[column].original_title || carouselData[column].original_name }</h1>
+                                    <h1 className='text-[18px] xs:text-h3 sm:text-h2 md:text-h1'>{carouselData[column].title || carouselData[column].name }</h1>
+                                    <h2 className='text-gray opacity-40 text-[12px] line-clamp-2 xs:text-[18px] sm:text-h3 md:text-h3'>{carouselData[column].overview}</h2>
                                 </div>
                             </div>
                         </div>

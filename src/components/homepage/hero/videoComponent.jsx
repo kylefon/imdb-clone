@@ -9,7 +9,7 @@ export default function VideoComponent({ background, main, title, caption, time 
             <img src={main} className='absolute h-36 top-5 left-4 rounded-xl'/>
             <div className='absolute top-5 left-32 right-3'> 
                 <h5 className='break-words'>{title}</h5>
-                <p className='break-words'>{caption}</p>
+                <p className='break-words line-clamp-2'>{caption}</p>
             </div>
             <div className='flex absolute bottom-4 right-6 items-center gap-[18px]'>
                 <p className='text-dark-textSecondary'>{time}</p>

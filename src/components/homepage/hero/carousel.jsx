@@ -11,7 +11,7 @@ export default function Carousel() {
         <div className="relative">
             <div className='flex flex-col mdlg:flex-row justify-center gap-6 items-start p-3 pb-[160px]'>
                 <CarouselComponent setDominantColor={setDominantColor} setSlideIndex={setSlideIndex}/>
-                <FeaturedVideos />
+                <FeaturedVideos slideIndex={slideIndex}/>
             </div>
             <BackgroundColor  dominantColor={dominantColor} slideIndex={slideIndex} />
         </div>
