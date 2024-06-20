@@ -33,9 +33,10 @@ export default function TopPicks() {
                 <div className="hidden lg:grid lg:grid-cols-6 lg:gap-[20px] w-full">
                     {Object.keys(trendingDay).slice(videoIndex, videoIndex+6).map((image, index) => (
                         <VerticalTitleCard 
-                        poster={`https://image.tmdb.org/t/p/original${trendingDay[image].poster_path}`} 
-                        title={trendingDay[image].title || trendingDay[image].name} 
-                        stars={ parseFloat(trendingDay[image].vote_average).toFixed(1) }
+                            key={index}
+                            poster={`https://image.tmdb.org/t/p/original${trendingDay[image].poster_path}`} 
+                            title={trendingDay[image].title || trendingDay[image].name} 
+                            stars={ parseFloat(trendingDay[image].vote_average).toFixed(1) }
                         />
                     ))}
                 </div>

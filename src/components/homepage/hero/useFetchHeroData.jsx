@@ -22,7 +22,6 @@ export const useFetchHeroData = () => {
                 }
                 const data = await response.json();
                 setHeroData(data.results);
-                console.log(heroData);
             } catch (error) {
                 console.error('Error fetching movie videos:', error);
             } 

@@ -9,11 +9,11 @@ export default function VerticalTitleCard({ poster, title, stars }) {
         <div className='flex text-dark-textPrimary gap-[20px] items-center w-full'>
             <div className='bg-gray/[0.1] p-3 rounded-lg flex flex-col gap-[17px] min-w-[200px]'>
                 <div className='flex relative gap-[17px]'>
-                    <img src={poster} className='rounded-lg w-full'/>
+                    <img src={poster} className='rounded-lg w-[176px]'/>
                     <img src={bookmark} className='absolute top-0 px-5' />
                 </div>
                 <div className='flex flex-col gap-[17px]'>
-                    <h3 className='text-h3 truncate w-full'>{title}</h3>
+                    <h3 className='text-h3 truncate w-[176px]'>{title}</h3>
                     <div className='flex gap-[22px] justify-start'>
                         <div className='flex gap-[20px]'>
                             <div className='flex gap-[5px] items-center'>

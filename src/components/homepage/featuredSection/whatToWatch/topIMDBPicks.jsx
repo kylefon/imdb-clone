@@ -23,12 +23,13 @@ export default function TopIMDBPicks() {
                         <h2 className="text-dark-textPrimary text-h2">Top on IMDb this week</h2>
                     </div>}
                 />
-                <div className="hidden lg:grid lg:grid-cols-6 lg:gap-[20px] w-full">
+                <div className="hidden lg:grid lg:grid-cols-6 lg:gap-[20px] lg:w-full">
                     {Object.keys(trendingWeek).slice(videoIndex, videoIndex+6).map((image, index) => (
                         <VerticalTitleCard 
-                        poster={`https://image.tmdb.org/t/p/original${trendingWeek[image].poster_path}`} 
-                        title={trendingWeek[image].title || trendingWeek[image].name} 
-                        stars={ parseFloat(trendingWeek[image].vote_average).toFixed(1) }
+                            key={index}
+                            poster={`https://image.tmdb.org/t/p/original${trendingWeek[image].poster_path}`} 
+                            title={trendingWeek[image].title || trendingWeek[image].name} 
+                            stars={ parseFloat(trendingWeek[image].vote_average).toFixed(1) }
                         />
                     ))}
                 </div>

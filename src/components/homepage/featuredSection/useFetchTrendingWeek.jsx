@@ -22,7 +22,6 @@ export const useFetchTrendingWeek = () => {
                 }
                 const data = await response.json();
                 setTrendingWeekData(data.results);
-                console.log(trendingWeekData);
             } catch (error) {
                 console.error('Error fetching movie videos:', error);
             } 

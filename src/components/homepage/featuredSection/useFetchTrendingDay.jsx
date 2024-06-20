@@ -22,7 +22,6 @@ export const useFetchTrendingDay = () => {
                 }
                 const data = await response.json();
                 setTrendingDayData(data.results);
-                console.log(trendingDayData);
             } catch (error) {
                 console.error('Error fetching movie videos:', error);
             } 
