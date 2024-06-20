@@ -16,7 +16,7 @@ export const useFetchHeroData = () => {
             };
 
             try {
-                const response = await fetch(`https://api.themoviedb.org/3/trending/all/day?language=en-US`, options);
+                const response = await fetch(`https://api.themoviedb.org/3/trending/all/week?language=en-US`, options);
                 if (!response.ok) {
                     throw new Error('Failed to fetch movie videos');
                 }

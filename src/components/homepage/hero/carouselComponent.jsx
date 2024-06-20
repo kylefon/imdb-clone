@@ -7,6 +7,8 @@ import lowLeftButton from './assets/left-carousel-lowOpacity.svg';
 import BrowseTrailerButton from './assets/browse_trailers.svg';
 import { useEffect, useRef, useState } from 'react';
 import { useFetchHeroData } from './useFetchHeroData';
+import { FastAverageColor } from 'fast-average-color';
+import { call } from 'file-loader';
 
 
 export default function CarouselComponent({ setDominantColor, setSlideIndex }) {
@@ -34,19 +36,13 @@ export default function CarouselComponent({ setDominantColor, setSlideIndex }) {
     };
 
     const getDominantColor = (imageSrc, callback) => {
-        const image = new Image();
-        image.crossOrigin = "Anonymous";
-
-        image.onload = () => {
-            const canvas = document.createElement("canvas");
-            const context = canvas.getContext("2d");
-            context.drawImage(image, 0, 0, 1, 1);
-            const [r, g, b, a] = context.getImageData(0, 0, 1, 1).data;
-            const color = `rgba(${r},${g},${b},${a})`;
-            callback(color);
-        };
-
-        image.src = imageSrc;
+        const fac = new FastAverageColor();
+        fac.getColorAsync(imageSrc)
+            .then(color => callback(color.rgba))
+            .catch(error => {
+                console.error('Error fetching image color:', error);
+                callback('rgba(0,0,0,1)');
+            })
     };
     
     useEffect(() => {
@@ -59,20 +55,29 @@ export default function CarouselComponent({ setDominantColor, setSlideIndex }) {
         return () => clearTimeout(timeoutRef.current);
     }, [slide]);
 
-
     useEffect(() => {
-        if (!colorsFetched.current) {
-            (carouselData).forEach((image, index) => {
-                getDominantColor(carouselData[image].backdrop_path, (color) => {
-                    if (!dominantColors.includes(color)) {
-                        setDominantColor(prevColors => [...prevColors, color]); //for background color 
-                        setDominantColors(prevColors => [...prevColors, color]); //for gradient
-                    }
+        if (carouselData.length > 0 && !colorsFetched.current) {
+            const colorPromises = carouselData.map((item, index) => {
+                return new Promise((resolve) => {
+                    const imageUrl = `https://image.tmdb.org/t/p/original${item.backdrop_path}`;
+                    getDominantColor(imageUrl, (color) => {
+                        resolve({ index, color });
+                    });
                 });
             });
-            colorsFetched.current = true;
+
+            Promise.all(colorPromises)
+                .then((colors) => {
+                    const sortedColors = colors.sort((a, b) => a.index - b.index).map(c => c.color);
+                    setDominantColors(sortedColors);
+                    setDominantColor(sortedColors);
+                    colorsFetched.current = true;
+            })
+            .catch((error) => {
+                console.error('Error fetching dominant colors:', error);
+            })
         }
-    }, []);
+    }, [carouselData]);
 
 
     return (
