@@ -1,7 +1,6 @@
 import FeaturedHeader from "../featuredHeader";
 import rightArrow from '../assets/arrow-right.svg'
 import VerticalTitleCard from "../verticalTitleCard";
-import { topPicks } from '../data/topPicks'
 import { useFetchTrendingDay } from "../useFetchTrendingDay";
 import { useState } from "react";
 
@@ -18,7 +17,7 @@ export default function TopPicks() {
                 <FeaturedHeader 
                     videoIndex={videoIndex}
                     setVideoIndex={setVideoIndex}
-                    trendingDay={trendingDay}
+                    data={trendingDay}
                     text={
                         <div>
                             <div className="flex items-center gap-[10px]">

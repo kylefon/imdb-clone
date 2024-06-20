@@ -4,16 +4,14 @@ import lowOPLeftButton from "./assets/left-carousel-lowOpacity.svg"
 import rightButton from "./assets/right-carousel.svg"
 import lowOPRightButton from "./assets/right-carousel-lowOpacity.svg"
 
-import { useFetchTrendingDay } from "./useFetchTrendingDay";
 
-
-export default function FeaturedHeader({ text, videoIndex, setVideoIndex, trendingDay }) {
+export default function FeaturedHeader({ text, videoIndex, setVideoIndex, data }) {
     const [hoverLeftButton, setHoverLeftButton] = useState(false);
     const [hoverRightButton, setHoverRightButton] = useState(false);
  
 
     const pressRightArrow = () => {
-        if (videoIndex + 6 < trendingDay.length) {
+        if (videoIndex + 6 < data.length) {
             setVideoIndex(prevIndex => prevIndex + 6);
         }
     };
